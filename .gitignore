@@ -1,0 +1,17 @@
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Compiled files
+*.class
+*.pyc
+__pycache__/

@@ -1,0 +1,39 @@
+# Configuration parameters for the Black-Scholes PDE and PINN training
+model_type: "BlackScholes"
+
+model:
+  S0: 50                      # Initial stock price
+  mu: 0.1                     # Drift
+  sigma: 0.2                  # Volatility
+  r: 0.05                     # Risk-free rate
+  K: 60                       # Strike price
+  T: 1.0                      # Maturity time
+  S_upper_bound: 2            # Upper bound 2*K
+  option_type: "call"         # Option type
+
+training:
+  learning_rate: 0.001        # Learning rate
+  batch_size: 10000          # Batch size
+  epochs: 5000               # Number of training epochs
+  num_points: 100             # Number of grid points for S and t
+  use_data: True             # Whether to use data-assisted PINN
+  uniform: True            # Whether to use uniform grid
+
+network:
+  input_dim: 2                # Number of input features (S, t)
+  hidden_layers: 3           # Number of hidden layers in the network
+  neurons_per_layer: 64     # Number of neurons per hidden layer
+
+paths:
+  save_dir: "./results"      # Directory to save results
+  plot_dir: "./plots"      # Directory to save plots
+  tensorboard_dir: "./tensorboard"      # Directory to save tensorboard logs
+
+weights:
+  data_weight: 1.0
+  pde_weight: 1.0
+  boundary_weight: 1.0
+
+simulation:
+  num_paths: 100
+  num_steps: 100

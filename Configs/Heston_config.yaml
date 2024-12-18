@@ -1,0 +1,42 @@
+# Configuration parameters for the Black-Scholes PDE and PINN training
+model_type: "Heston"
+
+model:
+  S0: 50                      # Initial stock price
+  r: 0.05                     # Risk-free rate
+  K: 60                       # Strike price
+  T: 1.0                      # Maturity time
+  S_upper_bound: 2            # Upper bound 2*K
+  kappa: 2.0                  # Mean reversion rate
+  theta: 0.15                 # Long-term variance
+  sigma_v: 0.1               # Volatility of variance
+  rho: -0.7                  # Correlation between stock and variance
+  v0: 0.2                   # Initial variance
+  option_type: "call"         # Option type
+
+training:
+  learning_rate: 0.01       # Learning rate
+  batch_size: 40000          # Batch size
+  epochs: 5000               # Number of training epochs
+  num_points: 150            # Number of grid points for S and t. PINN is mesh free but need data to train
+  use_data: True            # Whether to use data-assisted PINN
+  uniform: False            # Whether to use uniform grid
+
+network:
+  input_dim: 3                # Number of input features (S, t, v)
+  hidden_layers: 3           # Number of hidden layers in the network
+  neurons_per_layer: 64     # Number of neurons per hidden layer
+
+paths:
+  save_dir: "./results"      # Directory to save results
+  plot_dir: "./plots"      # Directory to save plots
+  tensorboard_dir: "./tensorboard"      # Directory to save tensorboard logs
+
+weights:
+  data_weight: 1.0
+  pde_weight: 1.0
+  boundary_weight: 1.0
+
+simulation:
+  num_paths: 100
+  num_steps: 100
