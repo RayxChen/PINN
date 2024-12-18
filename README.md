@@ -24,3 +24,9 @@ While PINNs have relatively slow training times compared to traditional methods,
 1. Calibrating models with real market prices
 2. Learning market patterns that might deviate from pure theoretical models
 3. Creating hybrid solutions that balance theoretical PDEs with empirical market behavior
+
+Preliminary runnings (Black-Scholes, precision can be improved):
+
+![comparison](./BlackScholes/plots/comparison_2d.png)
+
+![greeks](./BlackScholes/plots/greeks/greeks.png)
